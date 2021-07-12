@@ -207,11 +207,11 @@ class BareSIP(Thread):
         wav_file, duration = self.convert_audio(wav_file)
         # send audio stream
         LOG.info("transmitting audio")
-        self.do_command("/ausrc aufile," + wav_file)
+        self.do_command("/play " + wav_file)
         # wait till playback ends
         sleep(duration - 0.5)
         # avoid baresip exiting
-        self.do_command("/ausrc pulse,")
+        # self.do_command("/ausrc pulse,")
 
     @staticmethod
     def convert_audio(input_file, outfile=None):
