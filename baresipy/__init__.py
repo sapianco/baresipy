@@ -76,7 +76,7 @@ class BareSIP(Thread):
         self._call_status = None
         self.audio = None
         self._ts = None
-        self.baresip = pexpect.spawn('baresip -f ' + self.config_path, ,encoding='utf-8')
+        self.baresip = pexpect.spawn('baresip -f ' + self.config_path, encoding='utf-8')
         self.baresip.logfile = sys.stdout
         super().__init__()
         self.start()
