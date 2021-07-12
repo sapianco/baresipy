@@ -211,7 +211,7 @@ class BareSIP(Thread):
         # wait till playback ends
         sleep(duration - 0.5)
         # avoid baresip exiting
-        self.do_command("/ausrc alsa,default")
+        self.do_command("/ausrc pulse")
 
     @staticmethod
     def convert_audio(input_file, outfile=None):

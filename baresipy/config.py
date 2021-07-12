@@ -1,4 +1,5 @@
 DEFAULT = """#
+#
 # baresip configuration
 #
 
@@ -18,9 +19,14 @@ call_max_calls		4
 
 # Audio
 #audio_path		/usr/share/baresip
-audio_player		alsa,default
-audio_source		alsa,default
-audio_alert		alsa,default
+audio_player		pulse
+audio_source		pulse
+audio_alert		    pulse
+#audio_player		alsa,default
+#audio_source		aufile,/home/baresip/.baresipy/coffe.wav
+#audio_player 		aubridge,nil
+#audio_source 		ausine,362
+#audio_alert		alsa,default
 #ausrc_srate		48000
 #auplay_srate		48000
 #ausrc_channels		0
@@ -47,7 +53,7 @@ rtp_tos			184
 #rtp_bandwidth		512-1024 # [kbit/s]
 rtcp_mux		no
 jitter_buffer_delay	5-10		# frames
-rtp_stats		no
+rtp_stats		yes
 #rtp_timeout		60
 
 # Network
@@ -66,7 +72,7 @@ module_path		/usr/lib/baresip/modules
 module			stdio.so
 #module			cons.so
 #module			evdev.so
-#module			httpd.so
+module			httpd.so
 
 # Audio codec Modules (in order)
 module			opus.so
@@ -84,18 +90,19 @@ module			g711.so
 #module			isac.so
 
 # Audio filter Modules (in encoding order)
-module			vumeter.so
+#module			vumeter.so
 #module			sndfile.so
 #module			speex_aec.so
 #module			speex_pp.so
 #module			plc.so
 
 # Audio driver Modules
-module			alsa.so
+#module			alsa.so
 module			pulse.so
 #module			jack.so
 #module			portaudio.so
-#module			aubridge.so
+module			ausine.so
+module			aubridge.so
 module			aufile.so
 
 # Video codec Modules (in order)
@@ -164,7 +171,7 @@ module_app		menu.so
 #module_app		mwi.so
 #module_app		natbd.so
 #module_app		presence.so
-#module_app		syslog.so
+module_app		syslog.so
 #module_app		mqtt.so
 #module_app		ctrl_tcp.so
 module_app		vidloop.so
@@ -213,4 +220,5 @@ ice_mode		full	# {full,lite}
 #redial_attempts	3 # Num or <inf>
 #redial_delay		5 # Delay in seconds
 #ringback_disabled	yes
-#statmode_default	off"""
+#statmode_default	off
+"""
