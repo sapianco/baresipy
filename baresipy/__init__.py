@@ -1,5 +1,4 @@
 from time import sleep
-import sys
 import pexpect
 from opentone import ToneGenerator
 from responsive_voice import ResponsiveVoice
@@ -76,8 +75,12 @@ class BareSIP(Thread):
         self._call_status = None
         self.audio = None
         self._ts = None
+<<<<<<< HEAD
         self.baresip = pexpect.spawn('baresip -f ' + self.config_path, encoding='utf-8')
         self.baresip.logfile = sys.stdout
+=======
+        self.baresip = pexpect.spawn('baresip -f ' + self.config_path)
+>>>>>>> parent of 6c855cb (baresip to stdout)
         super().__init__()
         self.start()
         if block:
